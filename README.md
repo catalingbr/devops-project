@@ -29,7 +29,7 @@ Welcome to my React and Node tutorial to build a fully-functional e-commerce web
 
 ```
 $ git clone git@github.com:basir/node-react-ecommerce.git
-$ cd node-react-ecommerce
+$ cd devops-project/
 ```
 
 ### 2. Install MongoDB
@@ -47,7 +47,7 @@ $ npm start
 
 ```
 # open new terminal
-$ cd frontend
+$ cd frontend/
 $ npm install
 $ npm start
 ```
