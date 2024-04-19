@@ -2,6 +2,11 @@ pipeline {
 
     agent any
 
+    environment {
+        DOCKERHUB_REGISTRY = 'catalingbr/devops-project'
+        DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_CREDENTIALS')
+    }
+
     stages {
 
         stage('Checkout') {
@@ -11,17 +16,25 @@ pipeline {
 
         }
 
-        stage('Build Backend') { 
+        stage('Build Backend Image') { 
             steps {
-                sh 'sudo docker build . -t backend-image:latest'
+                script {
+                   backendDockerImage = docker.build('frontend-image:latest', '.')
+                }
             }
         }
 
         stage('Build Frontend') {
             steps {
-                sh 'sudo docker build ./frontend frontend-image:latest'
+                script {
+                    frontendDockerImage = docker.build('frontend-image:latest', './frontend')
+                }
             }
         }
 
+    }
+
+    options {
+        timestamps()
     }
 }
