@@ -1,11 +1,11 @@
 FROM node:14-alpine
 
-WORKDIR /app-backend
+WORKDIR /app-frontend
 
-COPY package*.json ./app-backend
+COPY package*.json ./app-frontend
 RUN npm install
 COPY . .
 
-EXPOSE 5000
+EXPOSE 3000
 
 CMD ["npm", "start"]
