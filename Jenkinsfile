@@ -19,7 +19,7 @@ pipeline {
         stage('Build Backend Image') { 
             steps {
                 script {
-                   backendDockerImage = docker.build('frontend-image:latest', '.')
+                   backendDockerImage = docker.build('frontend-image:latest', '-f Dockerfile-backend .')
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 script {
-                    frontendDockerImage = docker.build('frontend-image:latest', './frontend')
+                    frontendDockerImage = docker.build('frontend-image:latest', '-f Dockerfile ./frontend')
                 }
             }
         }
