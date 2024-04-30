@@ -17,17 +17,24 @@ pipeline {
             }
         }
 
-        stage('Test application') {
+        stage('Start backend') {
             steps {
-                sh "cd ${WORKSPACE}/backend & ls -l"
-                sh "nohup npm start &"
+                dir('backend') {
+                    sh "pwd"
+                    sh "nohup npm start &"
+                    sleep 10
+                    sh 'curl -k localhost:5000'
+                }
+            }
+        }
 
-                sh "cd ${WORKSPACE}/frontend & ls -l"
-                sh "nohup npm start &"
-
-                sleep 10
-                
-                sh 'curl -k localhost:5000'
+        stage ('Start frontend') {
+            steps {
+                dir('frontend') {
+                    sh "pwd"
+                    sh "cd ${WORKSPACE}/frontend & ls -l"
+                    sh "nohup npm start &"
+                }
             }
         }
 
