@@ -19,12 +19,11 @@ pipeline {
 
         stage('Test application') {
             steps {
-                sh "cd ${WORKSPACE}/backend"
-                sh 'npm start'
+                sh "cd ${WORKSPACE}/backend & ls -l"
+                sh "npm start"
 
-                sh "cd ${WORKSPACE}/frontend"
-
-                sh 'npm start'
+                sh "cd ${WORKSPACE}/frontend & ls -l"
+                sh "nohup npm start &"
 
                 sleep 10
                 
