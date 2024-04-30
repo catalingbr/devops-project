@@ -1,11 +1,14 @@
-FROM node:14-alpine
+# Use a specific Node.js version
+FROM node:14.18.1-alpine AS build
 
-WORKDIR /app-backend
-
-COPY package*.json ./app-backend
-RUN npm install
+WORKDIR /app
+COPY package*.json .
 COPY . .
+
+WORKDIR /app/backend
+RUN npm install
 
 EXPOSE 5000
 
+# Start the application
 CMD ["npm", "start"]

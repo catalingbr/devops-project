@@ -2,11 +2,6 @@ pipeline {
 
     agent any
 
-    environment {
-        DOCKERHUB_REGISTRY = 'catalingbr/devops-project'
-        DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_CREDENTIALS')
-    }
-
     stages {
 
         stage('Checkout') {
@@ -16,22 +11,27 @@ pipeline {
 
         }
 
-        stage('Build Backend Image') { 
+        stage('Install npm') { 
             steps {
-                script {
-                   backendDockerImage = docker.build('backend-image:latest', '-f Dockerfile-backend .')
-                }
+                sh 'npm install'
             }
         }
 
-        stage('Build Frontend Image') {
+        stage('Test') {
             steps {
-                script {
-                    frontendDockerImage = docker.build('frontend-image:latest', './frontend')
-                }
+                sh 'nohup npm start &'
+                sleep 10
+                sh 'curl -k localhost:3000'
             }
         }
 
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+                sh 'tar -czvf build.tar.gz build/*'
+                archiveArtifacts artifacts: 'build.tar.gz', followSymlinks: false
+            }
+        }
     }
 
     options {
