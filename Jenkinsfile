@@ -17,21 +17,29 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Test application') {
             steps {
+                sh 'cd backend'
                 sh 'nohup npm start &'
+
+                sh 'cd ../frontend'
+                sh 'nohup npm start &'
+
                 sleep 10
-                sh 'curl -k localhost:3000'
+                
+                sh 'curl -k localhost:5000'
             }
         }
 
-        stage('Build') {
+        stage ('Build') {
             steps {
-                sh 'npm run build'
-                sh 'tar -czvf build.tar.gz build/*'
+                sh "npm run build"
+                sh "tar -czvf build.tar.gz build/*"
                 archiveArtifacts artifacts: 'build.tar.gz', followSymlinks: false
+
             }
         }
+
     }
 
     options {
