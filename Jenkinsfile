@@ -22,7 +22,7 @@ pipeline {
                 sh 'cd backend'
                 sh 'nohup npm start &'
 
-                sh 'cd ../frontend'
+                sh 'cd frontend'
                 sh 'nohup npm start &'
 
                 sleep 10
