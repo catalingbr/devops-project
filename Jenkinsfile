@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        CI = 'true'
+        CI = 'false'
         registry = 'catalingbr/devops-project'
         registryCredential = 'Dockerhub'
         dockerImage = ''
@@ -25,7 +25,6 @@ pipeline {
                     sh "npm install"
                     sh "nohup npm start &"
                     sleep 10
-                    sh "cd .."
                 }
             }
         }
@@ -40,11 +39,6 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                sh 'curl -k -vvvv localhost:5000'
-            }
-        }
 
         stage('Build') {
             steps {
@@ -52,6 +46,12 @@ pipeline {
                 sh "tar -czvf build.tar.gz ."
                 archiveArtifacts artifacts: 'build.tar.gz', followSymlinks: false
 
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'curl -k -vvvv localhost:5000'
             }
         }
 
