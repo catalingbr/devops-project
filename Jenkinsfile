@@ -84,7 +84,7 @@ pipeline {
     post {
         always {
             cleanWs()
-            sh "docker rmi ${backendRegistry}:${env.BUILD_NUMBER}"
+            sh "docker rmi -f $(docker images | grep "backend" | awk '{print $3}')"
         }
     }
 
