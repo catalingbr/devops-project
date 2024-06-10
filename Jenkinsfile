@@ -59,14 +59,14 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 script {
-                    env.backendDockerImage = docker.build(backendRegistry + ":$BUILD_NUMBER", "-f Dockerfile-backend .")
+                    env.backendDockerImage = docker.build(backendRegistry + ":${BUILD_NUMBER}", "-f Dockerfile-backend .")
                 }
             }
         }
 
         stage('Upload Docker Images') {
             steps {
-                sh "docker push ${env.backendDockerImage}"
+                sh "docker push ${backendRegistry}:${BUILD_NUMBER}"
             }
         }
 
