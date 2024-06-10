@@ -66,10 +66,13 @@ pipeline {
 
         stage('Upload Docker Images') {
             steps {
-                docker.withRegistry('https://registry.hub.docker.com', 'registryCredential'){
-                    backendDockerImage.push("${env.BUILD_NUMBER}")
-                    backendDockerImage.push("latest")
+                script {
+                    docker.withRegistry("https://registry.hub.docker.com", "registryCredential"){
+                        backendDockerImage.push("${env.BUILD_NUMBER}")
+                        backendDockerImage.push("latest")
+                    }
                 }
+                
             }
         }
     }
