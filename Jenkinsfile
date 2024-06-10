@@ -71,8 +71,7 @@ pipeline {
                         backendDockerImage.push("${env.BUILD_NUMBER}")
                         backendDockerImage.push("latest")
                     }
-                }
-                
+                }   
             }
         }
     }
@@ -80,7 +79,6 @@ pipeline {
     post {
         always {
             cleanWs()
-            sh "docker rmi ${backendDockerImage}:${env.BUILD_NUMBER}"
         }
     }
 
