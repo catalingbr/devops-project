@@ -84,7 +84,7 @@ pipeline {
     post {
         always {
             cleanWs()
-            sh 'docker rmi -f ${backendRegistry}:${env.BUILD_NUMBER}'
+            sh "docker rmi -f ${backendRegistry}:${env.BUILD_NUMBER}"
         }
     }
 
