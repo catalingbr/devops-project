@@ -4,9 +4,11 @@ pipeline {
 
     environment {
         CI = 'false'
-        registry = 'catalingbr/devops-project'
+        backendRegistry = 'catalingbr/ecommerce-backend'
+        frontendRegistry = 'catalingbr/ecommerce-frontend'
         registryCredential = 'Dockerhub'
-        dockerImage = ''
+        backendDockerImage = ''
+        frontendDockerImage = ''
     }
 
     stages {
@@ -18,7 +20,7 @@ pipeline {
 
         }
 
-        stage('Start backend') {
+        stage('Start Backend') {
             steps {
                 dir('backend') {
                     sh "ls -lrth"
@@ -29,7 +31,7 @@ pipeline {
             }
         }
 
-        stage('Start frontend') {
+        stage('Start Frontend') {
             steps {
                 dir('frontend') {
                     sh "ls -lrth"
@@ -40,7 +42,7 @@ pipeline {
         }
 
 
-        stage('Build') {
+        stage('Build & Arhive') {
             steps {
                 sh "npm run build"
                 sh "tar -czvf build.tar.gz ./frontend ./backend package.json"
@@ -50,14 +52,14 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'curl -k -vvvv localhost:5000'
+                sh 'curl -k -vv localhost:5000'
             }
         }
 
-        stage('Build Docker image') {
+        stage('Build Docker Images') {
             steps {
                 script {
-                    dockerImage = docker.build(registry + ":$BUILD_NUMBER")
+                    backendDockerImage = docker.build(backendRegistry + ":$BUILD_NUMBER", "-f Dockerfile-backend .")
                 }
             }
         }
