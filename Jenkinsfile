@@ -4,8 +4,8 @@ pipeline {
 
     environment {
         CI = 'false'
-        backendRegistry = 'catalingbr/ecommerce-backend'
-        frontendRegistry = 'catalingbr/ecommerce-frontend'
+        backendRegistry = 'registry.hub.docker.com/catalingbr/ecommerce-backend'
+        frontendRegistry = 'registry.hub.docker.com/catalingbr/ecommerce-frontend'
         backendDockerImage = ''
         frontendDockerImage = ''
     }
@@ -84,7 +84,7 @@ pipeline {
     post {
         always {
             cleanWs()
-            sh "docker rmi -f $(docker images | grep 'backend' | awk '{print $3}')"
+            sh 'docker rmi -f ${backendRegistry}:${env.BUILD_NUMBER}'
         }
     }
 
