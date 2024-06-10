@@ -24,19 +24,10 @@ pipeline {
                     sh "npm install"
                     sh "nohup npm start &"
                     sleep 10
+                    sh "cd .."
                 }
             }
         }
-
-        // stage ('Build backend') {
-        //     steps {
-        //         dir('backend') {
-        //             sh 'npm run build'
-        //             sh 'tar -czf build.tar.gz .'
-        //             archiveArtifacts artifacts: 'build.tar.gz', followSymlinks: false
-        //         }
-        //     }
-        // }
 
         stage('Start frontend') {
             steps {
