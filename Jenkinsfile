@@ -60,6 +60,7 @@ pipeline {
             steps {
                 script {
                     backendDockerImage = docker.build(backendRegistry + ":$BUILD_NUMBER", "-f Dockerfile-backend .")
+                    sh "docker push ${backendDockerImage}"
                 }
             }
         }
