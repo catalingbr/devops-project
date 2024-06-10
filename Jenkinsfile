@@ -77,7 +77,7 @@ pipeline {
     post {
         always {
             cleanWs()
-            docker rmi "${backendDockerImage}":"${env.BUILD_NUMBER}"
+            sh "docker rmi ${backendDockerImage}:${env.BUILD_NUMBER}"
         }
     }
 
