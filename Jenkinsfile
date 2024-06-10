@@ -66,7 +66,8 @@ pipeline {
 
         stage('Upload Docker Images') {
             steps {
-                sh "docker push $backendDockerImage"
+                sh "echo ${backendDockerImage}"
+                sh "docker push ${backendDockerImage}"
             }
         }
 
