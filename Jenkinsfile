@@ -21,6 +21,7 @@ pipeline {
         stage('Start backend') {
             steps {
                 dir('backend') {
+                    sh "ls -lrth"
                     sh "npm install"
                     sh "nohup npm start &"
                     sleep 10
@@ -32,6 +33,7 @@ pipeline {
         stage('Start frontend') {
             steps {
                 dir('frontend') {
+                    sh "ls -lrth"
                     sh "npm install"
                     sh "nohup npm start &"
                 }
@@ -40,7 +42,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'curl -k localhost:5000'
+                sh 'curl -k -vvvv localhost:5000'
             }
         }
 
