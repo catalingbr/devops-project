@@ -2,6 +2,13 @@ pipeline {
 
     agent any
 
+    environment {
+        CI = 'true'
+        registry = 'catalingbr/devops-project'
+        registryCredential = 'Dockerhub'
+        dockerImage = ''
+    }
+
     stages {
 
         stage('Checkout') {
@@ -22,7 +29,17 @@ pipeline {
             }
         }
 
-        stage ('Start frontend') {
+        // stage ('Build backend') {
+        //     steps {
+        //         dir('backend') {
+        //             sh 'npm run build'
+        //             sh 'tar -czf build.tar.gz .'
+        //             archiveArtifacts artifacts: 'build.tar.gz', followSymlinks: false
+        //         }
+        //     }
+        // }
+
+        stage('Start frontend') {
             steps {
                 dir('frontend') {
                     sh "npm install"
@@ -31,12 +48,20 @@ pipeline {
             }
         }
 
-        stage ('Build') {
+        stage('Build') {
             steps {
                 sh "npm run build"
-                sh "tar -czvf build.tar.gz build/*"
+                sh "tar -czvf build.tar.gz ."
                 archiveArtifacts artifacts: 'build.tar.gz', followSymlinks: false
 
+            }
+        }
+
+        stage('Build Docker image') {
+            steps {
+                script {
+                    dockerImage = docker.build(registry + ":$BUILD_NUMBER")
+                }
             }
         }
 
