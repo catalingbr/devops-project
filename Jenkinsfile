@@ -84,7 +84,7 @@ pipeline {
     post {
         always {
             cleanWs()
-            sh "docker rmi -f $(docker images | grep "backend" | awk '{print $3}')"
+            sh "docker rmi -f $(docker images | grep 'backend' | awk '{print $3}')"
         }
     }
 
