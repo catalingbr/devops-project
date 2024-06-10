@@ -67,14 +67,19 @@ pipeline {
         stage('Upload Docker Images') {
             steps {
                 script {
-                    docker.withRegistry("https://registry.hub.docker.com", "registryCredential"){
-                        backendDockerImage.push("${env.BUILD_NUMBER}")
-                        backendDockerImage.push("latest")
-                    }
-                }   
+                    try {
+                        docker.withRegistry("https://registry.hub.docker.com", "registryCredential") {
+                            backendDockerImage.push("${env.BUILD_NUMBER}")
+                            backendDockerImage.push("latest")
+
+                            echo "Docker images pushed successfully"
+                        }
+                    } catch (Exception e) {
+                        echo "Error occurred while pushing Docker images: ${e.message}"
+                    }   
+                }
             }
         }
-    }
 
     post {
         always {
