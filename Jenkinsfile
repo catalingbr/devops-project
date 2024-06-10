@@ -6,7 +6,6 @@ pipeline {
         CI = 'false'
         backendRegistry = 'catalingbr/ecommerce-backend'
         frontendRegistry = 'catalingbr/ecommerce-frontend'
-        registryCredential = credentials('DOCKERHUB_CREDENTIALS')
         backendDockerImage = ''
         frontendDockerImage = ''
     }
@@ -68,7 +67,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        docker.withRegistry("https://registry.hub.docker.com", "registryCredential") {
+                        docker.withRegistry("https://registry.hub.docker.com", "DOCKERHUB_CREDENTIALS") {
                             backendDockerImage.push("${env.BUILD_NUMBER}")
                             backendDockerImage.push("latest")
 
