@@ -84,6 +84,7 @@ pipeline {
     post {
         always {
             cleanWs()
+            docker.image("${backendDockerImage}:${env.BUILD_NUMBER}").remove()
         }
     }
 
