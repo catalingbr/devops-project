@@ -42,10 +42,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "npm run build exit 0"
-                sh "tar -czvf build.tar.gz ."
+                sh "npm run build"
+                sh "tar -czvf build.tar.gz ./frontend ./backend package.json"
                 archiveArtifacts artifacts: 'build.tar.gz', followSymlinks: false
-
             }
         }
 
