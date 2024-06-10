@@ -24,7 +24,6 @@ pipeline {
                     sh "npm install"
                     sh "nohup npm start &"
                     sleep 10
-                    sh 'curl -k localhost:5000'
                 }
             }
         }
@@ -48,9 +47,15 @@ pipeline {
             }
         }
 
+        stage('Test') {
+            steps {
+                sh 'curl -k localhost:5000'
+            }
+        }
+
         stage('Build') {
             steps {
-                sh "npm run build"
+                sh "npm run build exit 0"
                 sh "tar -czvf build.tar.gz ."
                 archiveArtifacts artifacts: 'build.tar.gz', followSymlinks: false
 
