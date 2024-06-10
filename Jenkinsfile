@@ -6,7 +6,7 @@ pipeline {
         CI = 'false'
         backendRegistry = 'catalingbr/ecommerce-backend'
         frontendRegistry = 'catalingbr/ecommerce-frontend'
-        registryCredential = 'Dockerhub'
+        registryCredential = credentials('DOCKERHUB_CREDENTIALS')
         backendDockerImage = ''
         frontendDockerImage = ''
     }
@@ -59,15 +59,17 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 script {
-                    env.backendDockerImage = docker.build(backendRegistry + ":${env.BUILD_NUMBER}", "-f Dockerfile-backend .")
-
+                    backendDockerImage = docker.build(backendRegistry + ":${env.BUILD_NUMBER}", "-f Dockerfile-backend .")
                 }
             }
         }
 
         stage('Upload Docker Images') {
             steps {
-                env.backendDockerImage.push()
+                docker.withRegistry('https://registry.hub.docker.com', 'registryCredential'){
+                    backendDockerImage.push("${env.BUILD_NUMBER}")
+                    backendDockerImage.push("latest")
+                }
             }
         }
     }
@@ -75,6 +77,7 @@ pipeline {
     post {
         always {
             cleanWs()
+            docker rmi "${backendDockerImage}":"${env.BUILD_NUMBER}"
         }
     }
 
