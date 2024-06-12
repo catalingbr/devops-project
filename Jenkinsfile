@@ -58,7 +58,8 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 script {
-                    backendDockerImage = docker.build(backendRegistry + ":${env.BUILD_NUMBER}", "-f Dockerfile-backend .")
+                    backendDockerImage = docker.build(backendRegistry + ":${env.BUILD_NUMBER}", "-f Dockerfile .")
+                    frontendDockerImage = docker.build(frontendRegistry + ":${env.BUILD_NUMBER}", "-f Dockerfile ./frontend")
                 }
             }
         }
@@ -70,6 +71,9 @@ pipeline {
                         docker.withRegistry("https://registry.hub.docker.com", "DOCKERHUB_CREDENTIALS") {
                             backendDockerImage.push("${env.BUILD_NUMBER}")
                             backendDockerImage.push("latest")
+
+                            frontendDockerImage.push("${env.BUILD_NUMBER}")
+                            frontendDockerImage.push("latest")
 
                             echo "Docker images pushed successfully"
                         }
@@ -85,6 +89,8 @@ pipeline {
         always {
             cleanWs()
             sh "docker rmi -f ${backendRegistry}:${env.BUILD_NUMBER}"
+            sh "docker rmi -f ${frontendRegistry}:${env.BUILD_NUMBER}"
+            sh "docker system prune"
         }
     }
 
