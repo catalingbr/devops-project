@@ -59,7 +59,10 @@ pipeline {
             steps {
                 script {
                     backendDockerImage = docker.build(backendRegistry + ":${env.BUILD_NUMBER}", "-f Dockerfile .")
-                    frontendDockerImage = docker.build(frontendRegistry + ":${env.BUILD_NUMBER}", "-f Dockerfile ./frontend")
+                    dir('frontend'){
+                        frontendDockerImage = docker.build(frontendRegistry + ":${env.BUILD_NUMBER}", "-f Dockerfile .")
+                    }
+                    
                 }
             }
         }
