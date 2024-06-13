@@ -116,10 +116,11 @@ pipeline {
                 sh "docker-compose up -d"
 
                 sh "docker ps -a"
+
                 
                 sh "curl -vvv localhost:5000"
                 sh "curl -vvv localhost:5000/register"
-                sh "curl -vvv localhost:3000"
+                sh "curl -vvv localhost:3000""
             }
 
             post {
