@@ -18,7 +18,7 @@ pipeline {
             }
         }
 
-        stage('Git Clone') {
+        stage('Git Checkout') {
             steps {
                 git url: 'https://github.com/catalingbr/devops-project.git', branch: 'master'
             }
