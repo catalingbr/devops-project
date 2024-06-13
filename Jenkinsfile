@@ -60,11 +60,15 @@ pipeline {
 
         stage('Stop npm processes') {
             steps {
-                sh "lsof -i:5000"
-                sh "kill $(lsof -t -i:5000)"
+                script {
+                    sh '''
+                        lsof -i:5000"
+                        kill $(lsof -t -i:5000)"
 
-                sh "lsof -i:3000"
-                sh "kill $(lsof -t -i:3000)"
+                        lsof -i:3000"
+                        kill $(lsof -t -i:3000)"
+                    '''
+                }
             }
         }
 
