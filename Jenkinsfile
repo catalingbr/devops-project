@@ -49,9 +49,10 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Run tests') {
             steps {
-                sh 'curl -k -vv localhost:5000'
+                sh "curl -v localhost:5000"
+                sh "curl -v localhost:3000"
             }
         }
 
@@ -86,6 +87,12 @@ pipeline {
                 }
             }
         }
+
+        stage('Start containers with docker-compose') {
+            steps {
+                sh "docker-compose up -d"
+            }
+        }
     }
 
     post {
@@ -93,7 +100,8 @@ pipeline {
             cleanWs()
             sh "docker rmi -f ${backendRegistry}:${env.BUILD_NUMBER}"
             sh "docker rmi -f ${frontendRegistry}:${env.BUILD_NUMBER}"
-            sh "docker system prune"
+            sh "docker-compose down"
+            sh "docker system prune -f"
         }
     }
 

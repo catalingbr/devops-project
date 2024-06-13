@@ -1,8 +1,7 @@
 version: '3.8'
 services:
   frontend:
-    build:
-      context: ./frontend
+    image: catalingbr/ecommerce-frontend:latest
     ports:
       - "3000:3000"
     depends_on:
@@ -11,8 +10,7 @@ services:
       - REACT_APP_API_URL=http://127.0.0.1:5000
 
   backend:
-    build:
-      context: ./
+    image: catalingbr/ecommerce-backend:latest
     ports:
       - "5000:5000"
     environment:
