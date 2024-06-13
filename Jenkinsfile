@@ -12,7 +12,13 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+
+        stage('Git Checkout') {
             steps {
                 git url: 'https://github.com/catalingbr/devops-project.git', branch: 'master'
             }
@@ -36,6 +42,7 @@ pipeline {
                     sh "ls -lrth"
                     sh "npm install"
                     sh "nohup npm start &"
+                    sleep 10
                 }
             }
         }
@@ -106,23 +113,48 @@ pipeline {
 
         stage('Start containers with docker-compose') {
             steps {
-                sh "docker-compose -f docker-compose.yml up -d"
+                sh "docker-compose up -d"
+
                 sh "docker ps -a"
+                
+                sh "curl -vvv localhost:5000"
+                sh "curl -vvv localhost:5000/register"
+                sh "curl -vvv localhost:3000"
+            }
+
+            post {
+                always {
+                    sh "docker rmi -f ${backendRegistry}:${env.BUILD_NUMBER}"
+                    sh "docker rmi -f ${frontendRegistry}:${env.BUILD_NUMBER}"
+
+                    sh "docker-compose down"
+
+                    sh "docker system prune -f"
+                    sh "docker volume prune -f"
+                }
             }
         }
     }
 
     post {
+        failure {
+            emailext to: 'catalingabriel.nicolae@gmail.com', subject: "Build Failed: ${currentBuild.fullDisplayName}", body: "Please check the build logs."
+        }
+
+        success {
+            emailext to: 'catalingabriel.nicolae@gmail.com', subject: "Build Succeeded: ${currentBuild.fullDisplayName}", body: "Build is successful."
+        }
+
         always {
             cleanWs()
-            sh "docker rmi -f ${backendRegistry}:${env.BUILD_NUMBER}"
-            sh "docker rmi -f ${frontendRegistry}:${env.BUILD_NUMBER}"
-            sh "docker-compose -f docker-compose.yml down"
-            sh "docker system prune -f"
         }
     }
 
     options {
         timestamps()
+    }
+
+    triggers {
+        githubPush()
     }
 }
