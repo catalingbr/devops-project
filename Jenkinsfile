@@ -51,10 +51,10 @@ pipeline {
 
         stage('Run tests') {
             steps {
-                sh "curl localhost:5000"
-                sh "curl localhost:5000/register"
+                sh "curl -vvv localhost:5000"
+                sh "curl -vvv localhost:5000/register"
 
-                sh "curl localhost:3000"
+                sh "curl -vvv localhost:3000"
             }
         }
 
@@ -62,7 +62,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        sudo sof -i:5000
+                        sudo lsof -i:5000
                         sudo kill $(sudo lsof -t -i:5000)
 
                         sudo lsof -i:3000
