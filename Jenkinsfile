@@ -51,8 +51,19 @@ pipeline {
 
         stage('Run tests') {
             steps {
-                sh "curl -v localhost:5000"
-                sh "curl -v localhost:3000"
+                sh "curl localhost:5000"
+                sh "curl localhost:5000/register"
+
+                sh "curl localhost:3000"
+            }
+        }
+
+        stage('Stop npm processes') {
+            steps {
+                sh '''
+                    kill $(lsof -t -i:5000)
+                    kill $(lsof -t -i:3000)
+                '''
             }
         }
 
@@ -100,7 +111,6 @@ pipeline {
             cleanWs()
             sh "docker rmi -f ${backendRegistry}:${env.BUILD_NUMBER}"
             sh "docker rmi -f ${frontendRegistry}:${env.BUILD_NUMBER}"
-            sh "docker-compose down"
             sh "docker system prune -f"
         }
     }

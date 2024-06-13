@@ -1,0 +1,471 @@
+
+> amazona@1.0.0 start
+> nodemon --watch backend --exec babel-node backend/server.js
+
+[33m[nodemon] 2.0.22[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): backend/**/*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node backend/server.js`[39m
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at errorOrDestroy (node:internal/streams/destroy:238:7)
+    at node:internal/fs/streams:272:9
+    at FSReqCallback.wrapper [as oncomplete] (node:fs:687:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+
+Node.js v20.12.2
+Server started at http://localhost:5000
+(node:522797) NOTE: The AWS SDK for JavaScript (v2) will enter maintenance mode
+on September 8, 2024 and reach end-of-support on September 8, 2025.
+
+Please migrate your code to use AWS SDK for JavaScript (v3).
+For more information, check blog post at https://a.co/cUPnyil
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> amazona@1.0.0 start
+> nodemon --watch backend --exec babel-node backend/server.js
+
+[33m[nodemon] 2.0.22[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): backend/**/*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node backend/server.js`[39m
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at errorOrDestroy (node:internal/streams/destroy:238:7)
+    at node:internal/fs/streams:272:9
+    at FSReqCallback.wrapper [as oncomplete] (node:fs:687:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+
+Node.js v20.12.2
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (node:net:1897:16)
+    at listenInCluster (node:net:1945:12)
+    at Server.listen (node:net:2037:7)
+    at Function.listen (/home/catalin/devops-course/devops-project/node_modules/express/lib/application.js:635:24)
+    at Object.<anonymous> (/home/catalin/devops-course/devops-project/backend/server.js:35:5)
+    at Module._compile (node:internal/modules/cjs/loader:1369:14)
+    at Module._compile (/home/catalin/devops-course/devops-project/node_modules/pirates/lib/index.js:117:24)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1427:10)
+    at Object.newLoader [as .js] (/home/catalin/devops-course/devops-project/node_modules/pirates/lib/index.js:121:7)
+    at Module.load (node:internal/modules/cjs/loader:1206:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1022:12)
+    at Function.runMain (node:internal/modules/run_main:135:12)
+    at Object.<anonymous> (/home/catalin/devops-course/devops-project/node_modules/@babel/node/src/_babel-node.ts:222:12)
+    at Module._compile (node:internal/modules/cjs/loader:1369:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1427:10)
+    at Module.load (node:internal/modules/cjs/loader:1206:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1022:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:135:12)
+    at node:internal/main/run_main_module:28:49
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1924:8)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+
+Node.js v20.12.2
+
+> amazona@1.0.0 start
+> nodemon --watch backend --exec babel-node backend/server.js
+
+[33m[nodemon] 2.0.22[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): backend/**/*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node backend/server.js`[39m
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at errorOrDestroy (node:internal/streams/destroy:238:7)
+    at node:internal/fs/streams:272:9
+    at FSReqCallback.wrapper [as oncomplete] (node:fs:687:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+
+Node.js v20.12.2
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (node:net:1897:16)
+    at listenInCluster (node:net:1945:12)
+    at Server.listen (node:net:2037:7)
+    at Function.listen (/home/catalin/devops-course/devops-project/node_modules/express/lib/application.js:635:24)
+    at Object.<anonymous> (/home/catalin/devops-course/devops-project/backend/server.js:35:5)
+    at Module._compile (node:internal/modules/cjs/loader:1369:14)
+    at Module._compile (/home/catalin/devops-course/devops-project/node_modules/pirates/lib/index.js:117:24)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1427:10)
+    at Object.newLoader [as .js] (/home/catalin/devops-course/devops-project/node_modules/pirates/lib/index.js:121:7)
+    at Module.load (node:internal/modules/cjs/loader:1206:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1022:12)
+    at Function.runMain (node:internal/modules/run_main:135:12)
+    at Object.<anonymous> (/home/catalin/devops-course/devops-project/node_modules/@babel/node/src/_babel-node.ts:222:12)
+    at Module._compile (node:internal/modules/cjs/loader:1369:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1427:10)
+    at Module.load (node:internal/modules/cjs/loader:1206:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1022:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:135:12)
+    at node:internal/main/run_main_module:28:49
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1924:8)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+
+Node.js v20.12.2
+
+> amazona@1.0.0 start
+> nodemon --watch backend --exec babel-node backend/server.js
+
+[33m[nodemon] 2.0.22[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): backend/**/*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node backend/server.js`[39m
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at errorOrDestroy (node:internal/streams/destroy:238:7)
+    at node:internal/fs/streams:272:9
+    at FSReqCallback.wrapper [as oncomplete] (node:fs:687:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+
+Node.js v20.12.2
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (node:net:1897:16)
+    at listenInCluster (node:net:1945:12)
+    at Server.listen (node:net:2037:7)
+    at Function.listen (/home/catalin/devops-course/devops-project/node_modules/express/lib/application.js:635:24)
+    at Object.<anonymous> (/home/catalin/devops-course/devops-project/backend/server.js:35:5)
+    at Module._compile (node:internal/modules/cjs/loader:1369:14)
+    at Module._compile (/home/catalin/devops-course/devops-project/node_modules/pirates/lib/index.js:117:24)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1427:10)
+    at Object.newLoader [as .js] (/home/catalin/devops-course/devops-project/node_modules/pirates/lib/index.js:121:7)
+    at Module.load (node:internal/modules/cjs/loader:1206:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1022:12)
+    at Function.runMain (node:internal/modules/run_main:135:12)
+    at Object.<anonymous> (/home/catalin/devops-course/devops-project/node_modules/@babel/node/src/_babel-node.ts:222:12)
+    at Module._compile (node:internal/modules/cjs/loader:1369:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1427:10)
+    at Module.load (node:internal/modules/cjs/loader:1206:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1022:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:135:12)
+    at node:internal/main/run_main_module:28:49
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1924:8)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+
+Node.js v20.12.2
+/home/catalin/devops-course/devops-project/node_modules/mongoose/lib/document.js:2788
+    this.$__.validationError = new ValidationError(this);
+                               ^
+
+ValidationError: User validation failed: name: Path `name` is required., email: Path `email` is required., password: Path `password` is required.
+    at model.Document.invalidate (/home/catalin/devops-course/devops-project/node_modules/mongoose/lib/document.js:2788:32)
+    at /home/catalin/devops-course/devops-project/node_modules/mongoose/lib/document.js:2580:17
+    at /home/catalin/devops-course/devops-project/node_modules/mongoose/lib/schematype.js:1273:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11) {
+  errors: {
+    name: ValidatorError: Path `name` is required.
+        at validate (/home/catalin/devops-course/devops-project/node_modules/mongoose/lib/schematype.js:1270:13)
+        at /home/catalin/devops-course/devops-project/node_modules/mongoose/lib/schematype.js:1253:7
+        at Array.forEach (<anonymous>)
+        at SchemaString.SchemaType.doValidate (/home/catalin/devops-course/devops-project/node_modules/mongoose/lib/schematype.js:1198:14)
+        at /home/catalin/devops-course/devops-project/node_modules/mongoose/lib/document.js:2573:18
+        at processTicksAndRejections (node:internal/process/task_queues:77:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `name` is required.',
+        type: 'required',
+        path: 'name',
+        value: ''
+      },
+      kind: 'required',
+      path: 'name',
+      value: '',
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    email: ValidatorError: Path `email` is required.
+        at validate (/home/catalin/devops-course/devops-project/node_modules/mongoose/lib/schematype.js:1270:13)
+        at /home/catalin/devops-course/devops-project/node_modules/mongoose/lib/schematype.js:1253:7
+        at Array.forEach (<anonymous>)
+        at SchemaString.SchemaType.doValidate (/home/catalin/devops-course/devops-project/node_modules/mongoose/lib/schematype.js:1198:14)
+        at /home/catalin/devops-course/devops-project/node_modules/mongoose/lib/document.js:2573:18
+        at processTicksAndRejections (node:internal/process/task_queues:77:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `email` is required.',
+        type: 'required',
+        path: 'email',
+        value: ''
+      },
+      kind: 'required',
+      path: 'email',
+      value: '',
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    password: ValidatorError: Path `password` is required.
+        at validate (/home/catalin/devops-course/devops-project/node_modules/mongoose/lib/schematype.js:1270:13)
+        at /home/catalin/devops-course/devops-project/node_modules/mongoose/lib/schematype.js:1253:7
+        at Array.forEach (<anonymous>)
+        at SchemaString.SchemaType.doValidate (/home/catalin/devops-course/devops-project/node_modules/mongoose/lib/schematype.js:1198:14)
+        at /home/catalin/devops-course/devops-project/node_modules/mongoose/lib/document.js:2573:18
+        at processTicksAndRejections (node:internal/process/task_queues:77:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `password` is required.',
+        type: 'required',
+        path: 'password',
+        value: ''
+      },
+      kind: 'required',
+      path: 'password',
+      value: '',
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'User validation failed'
+}
+
+Node.js v20.12.2
+
+> amazona@1.0.0 start
+> nodemon --watch backend --exec babel-node backend/server.js
+
+[33m[nodemon] 2.0.22[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): backend/**/*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node backend/server.js`[39m
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at errorOrDestroy (node:internal/streams/destroy:238:7)
+    at node:internal/fs/streams:272:9
+    at FSReqCallback.wrapper [as oncomplete] (node:fs:687:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+
+Node.js v20.12.2
+Server started at http://localhost:5000
+(node:526970) NOTE: The AWS SDK for JavaScript (v2) will enter maintenance mode
+on September 8, 2024 and reach end-of-support on September 8, 2025.
+
+Please migrate your code to use AWS SDK for JavaScript (v3).
+For more information, check blog post at https://a.co/cUPnyil
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> amazona@1.0.0 start
+> nodemon --watch backend --exec babel-node backend/server.js
+
+[33m[nodemon] 2.0.22[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): backend/**/*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node backend/server.js`[39m
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at errorOrDestroy (node:internal/streams/destroy:238:7)
+    at node:internal/fs/streams:272:9
+    at FSReqCallback.wrapper [as oncomplete] (node:fs:687:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+
+Node.js v20.12.2
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (node:net:1897:16)
+    at listenInCluster (node:net:1945:12)
+    at Server.listen (node:net:2037:7)
+    at Function.listen (/home/catalin/devops-course/devops-project/node_modules/express/lib/application.js:635:24)
+    at Object.<anonymous> (/home/catalin/devops-course/devops-project/backend/server.js:35:5)
+    at Module._compile (node:internal/modules/cjs/loader:1369:14)
+    at Module._compile (/home/catalin/devops-course/devops-project/node_modules/pirates/lib/index.js:117:24)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1427:10)
+    at Object.newLoader [as .js] (/home/catalin/devops-course/devops-project/node_modules/pirates/lib/index.js:121:7)
+    at Module.load (node:internal/modules/cjs/loader:1206:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1022:12)
+    at Function.runMain (node:internal/modules/run_main:135:12)
+    at Object.<anonymous> (/home/catalin/devops-course/devops-project/node_modules/@babel/node/src/_babel-node.ts:222:12)
+    at Module._compile (node:internal/modules/cjs/loader:1369:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1427:10)
+    at Module.load (node:internal/modules/cjs/loader:1206:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1022:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:135:12)
+    at node:internal/main/run_main_module:28:49
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1924:8)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+
+Node.js v20.12.2
+
+> amazona@1.0.0 start
+> nodemon --watch backend --exec babel-node backend/server.js
+
+[33m[nodemon] 2.0.22[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): backend/**/*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node backend/server.js`[39m
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at errorOrDestroy (node:internal/streams/destroy:238:7)
+    at node:internal/fs/streams:272:9
+    at FSReqCallback.wrapper [as oncomplete] (node:fs:687:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+
+Node.js v20.12.2
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (node:net:1897:16)
+    at listenInCluster (node:net:1945:12)
+    at Server.listen (node:net:2037:7)
+    at Function.listen (/home/catalin/devops-course/devops-project/node_modules/express/lib/application.js:635:24)
+    at Object.<anonymous> (/home/catalin/devops-course/devops-project/backend/server.js:35:5)
+    at Module._compile (node:internal/modules/cjs/loader:1369:14)
+    at Module._compile (/home/catalin/devops-course/devops-project/node_modules/pirates/lib/index.js:117:24)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1427:10)
+    at Object.newLoader [as .js] (/home/catalin/devops-course/devops-project/node_modules/pirates/lib/index.js:121:7)
+    at Module.load (node:internal/modules/cjs/loader:1206:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1022:12)
+    at Function.runMain (node:internal/modules/run_main:135:12)
+    at Object.<anonymous> (/home/catalin/devops-course/devops-project/node_modules/@babel/node/src/_babel-node.ts:222:12)
+    at Module._compile (node:internal/modules/cjs/loader:1369:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1427:10)
+    at Module.load (node:internal/modules/cjs/loader:1206:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1022:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:135:12)
+    at node:internal/main/run_main_module:28:49
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1924:8)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+
+Node.js v20.12.2
+
+> amazona@1.0.0 start
+> nodemon --watch backend --exec babel-node backend/server.js
+
+[33m[nodemon] 2.0.22[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): backend/**/*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node backend/server.js`[39m
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at errorOrDestroy (node:internal/streams/destroy:238:7)
+    at node:internal/fs/streams:272:9
+    at FSReqCallback.wrapper [as oncomplete] (node:fs:687:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+
+Node.js v20.12.2
+Server started at http://localhost:5000
+(node:543832) NOTE: The AWS SDK for JavaScript (v2) will enter maintenance mode
+on September 8, 2024 and reach end-of-support on September 8, 2025.
+
+Please migrate your code to use AWS SDK for JavaScript (v3).
+For more information, check blog post at https://a.co/cUPnyil
+(Use `node --trace-warnings ...` to show where the warning was created)
