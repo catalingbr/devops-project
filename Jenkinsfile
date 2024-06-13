@@ -106,7 +106,8 @@ pipeline {
 
         stage('Start containers with docker-compose') {
             steps {
-                sh "docker-compose up -d"
+                sh "docker-compose -f docker-compose.yml up -d"
+                sh "docker ps -a"
             }
         }
     }
@@ -116,7 +117,7 @@ pipeline {
             cleanWs()
             sh "docker rmi -f ${backendRegistry}:${env.BUILD_NUMBER}"
             sh "docker rmi -f ${frontendRegistry}:${env.BUILD_NUMBER}"
-            sh "docker-compose down"
+            sh "docker-compose -f docker-compose.yml down"
             sh "docker system prune -f"
         }
     }
