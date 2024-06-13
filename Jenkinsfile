@@ -22,7 +22,6 @@ pipeline {
             steps {
                 git url: 'https://github.com/catalingbr/devops-project.git', branch: 'master'
             }
-
         }
 
         stage('Start Backend') {
@@ -119,7 +118,7 @@ pipeline {
                     sh "docker ps -a"
 
                     sleep 25
-                    
+
                     sh "curl -vvv localhost:5000"
                     sh "curl -vvv localhost:5000/register"
                     sh "curl -vvv localhost:3000"
