@@ -62,11 +62,11 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        lsof -i:5000"
-                        kill $(lsof -t -i:5000)"
+                        lsof -i:5000
+                        kill $(lsof -t -i:5000)
 
-                        lsof -i:3000"
-                        kill $(lsof -t -i:3000)"
+                        lsof -i:3000
+                        kill $(lsof -t -i:3000)
                     '''
                 }
             }
