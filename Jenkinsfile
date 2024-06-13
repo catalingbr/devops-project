@@ -113,14 +113,18 @@ pipeline {
 
         stage('Start containers with docker-compose') {
             steps {
-                sh "docker-compose up -d"
+                script{ 
+                    sh "docker-compose up -d"
 
-                sh "docker ps -a"
+                    sh "docker ps -a"
 
-                
-                sh "curl -vvv localhost:5000"
-                sh "curl -vvv localhost:5000/register"
-                sh "curl -vvv localhost:3000"
+                    sleep 25
+                    
+                    sh "curl -vvv localhost:5000"
+                    sh "curl -vvv localhost:5000/register"
+                    sh "curl -vvv localhost:3000"
+                }
+
             }
 
             post {
