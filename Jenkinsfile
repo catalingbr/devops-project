@@ -120,7 +120,7 @@ pipeline {
                 
                 sh "curl -vvv localhost:5000"
                 sh "curl -vvv localhost:5000/register"
-                sh "curl -vvv localhost:3000""
+                sh "curl -vvv localhost:3000"
             }
 
             post {
