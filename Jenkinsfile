@@ -24,28 +24,23 @@ pipeline {
             }
         }
 
-        stage('Start Backend') {
+        stage('Start App') {
             steps {
                 dir('backend') {
                     sh "ls -lrth"
                     sh "npm install"
                     sh "nohup npm start &"
-                    sleep 10
+                    sleep 15
                 }
-            }
-        }
 
-        stage('Start Frontend') {
-            steps {
                 dir('frontend') {
                     sh "ls -lrth"
                     sh "npm install"
                     sh "nohup npm start &"
-                    sleep 10
+                    sleep 15
                 }
             }
         }
-
 
         stage('Build & Arhive') {
             steps {
