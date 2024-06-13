@@ -60,10 +60,11 @@ pipeline {
 
         stage('Stop npm processes') {
             steps {
-                sh '''
-                    kill $(lsof -t -i:5000)
-                    kill $(lsof -t -i:3000)
-                '''
+                sh "lsof -i:5000"
+                sh "kill $(lsof -t -i:5000)"
+
+                sh "lsof -i:3000"
+                sh "kill $(lsof -t -i:3000)"
             }
         }
 
@@ -101,7 +102,7 @@ pipeline {
 
         stage('Start containers with docker-compose') {
             steps {
-                sh "docker-compose up"
+                sh "docker-compose up -d"
             }
         }
     }
@@ -111,6 +112,7 @@ pipeline {
             cleanWs()
             sh "docker rmi -f ${backendRegistry}:${env.BUILD_NUMBER}"
             sh "docker rmi -f ${frontendRegistry}:${env.BUILD_NUMBER}"
+            sh "docker-compose down"
             sh "docker system prune -f"
         }
     }
