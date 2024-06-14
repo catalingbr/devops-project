@@ -1,0 +1,49 @@
+---
+- hosts: app
+  become: true
+  gather_facts: true
+  tasks:
+    - name: Update package cache and upgrade packages
+      become: yes
+      yum:
+        name: '*'
+        state: latest
+
+    - name: Install prerequisites
+      become: yes
+      yum:
+        name:
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
+          - git
+        state: present
+
+    - name: Install Docker
+      become: yes
+      yum:
+        name: docker
+        state: present
+
+    - name: Start Docker service
+      become: yes
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Install Docker Compose
+      become: yes
+      shell: sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s | tr '[:upper:]' '[:lower:]')-$(uname -m) -o /usr/bin/docker-compose && sudo chmod 755 /usr/bin/docker-compose && docker-compose --version
+
+    - name: Clone Git repository
+      git:
+        repo: https://github.com/catalingbr/devops-project.git
+        dest: /myapp 
+        version: master 
+    
+    - name: Start application containers
+      command: docker-compose up -d
+      args:
+        chdir: /myapp
+      become: true
